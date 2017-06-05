@@ -1,0 +1,107 @@
+<div ng-controller="serviceCatalogControllerMain">
+  <div class="page-header">
+   <div class="row">
+    <div  class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+      {{serviceCatalog.title}}  
+    </div>        
+  </div>   
+</div>
+<div class="row" ng-if="serviceCatalog.status == 'ordered' && closeNow == false">
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <center><div class="well">Thankyou, the service has been ordered.<i class="fa fa-times pull-right" aria-hidden="true" ng-click="closePop()"></i></div></center>
+  </div>
+</div>
+<br>
+<div class="row padleft">
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    Category :  <b>{{serviceCatalog.category}} </b> 
+  </div>
+</div>
+<br>
+<div class="row padleft">
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    Subcategory  : <b> {{serviceCatalog.subCategory}}</b>
+  </div>
+</div>
+<br>
+<div class="row padleft">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 title-tasks">
+    <p>{{serviceCatalog.title}}</p>
+  </div>
+</div>
+<br>
+<div class="row padleft">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-desc-20px"><richtext body-text="serviceCatalog.description"></richtext></div>           
+</div>
+<br>
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    <div class="well" ng-if="serviceCatalog.small != undefined && serviceCatalog.small.turnaround != '' && serviceCatalog.small.price != null">
+      <label>Small Sizing</label>
+      <div class="row padleft">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          Turnaround time is <b>{{serviceCatalog.small.turnaround}}</b>
+        </div>
+      </div>
+      <div class="row padleft">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">Price is <b>{{serviceCatalog.small.price | currency}} </b>
+        </div>
+      </div><br>
+      <div class="row padleft" ng-if="serviceCatalog.status == 'open'">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+          <button type="button" class="btn btn-info pull-right" style="background-color:#ffed00" ng-click="order(serviceCatalog,ev)"> Order</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    <div class="well" ng-if="serviceCatalog.medium != undefined && serviceCatalog.medium.turnaround != '' && serviceCatalog.medium.price != null">
+      <label>Medium Sizing</label>
+      <div class="row padleft">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          Turnaround time is <b>{{serviceCatalog.medium.turnaround}}</b>
+        </div>
+      </div>
+      <div class="row padleft">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">Price is <b>{{serviceCatalog.medium.price | currency}} </b>
+        </div>
+      </div><br>
+      <div class="row padleft " ng-if="serviceCatalog.status == 'open'">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+          <button type="button" class="btn btn-info pull-right" style="background-color:#ffed00" ng-click="order(serviceCatalog,ev)"> Order</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    <div class="well" ng-if="serviceCatalog.large != undefined && serviceCatalog.large.turnaround != '' && serviceCatalog.large.price != null">
+      <label>Large Sizing</label>
+      <div class="row padleft">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          Turnaround time is <b>{{serviceCatalog.large.turnaround}}</b>
+        </div>
+      </div>
+      <div class="row padleft">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">Price is <b>{{serviceCatalog.large.price | currency}} </b>
+        </div>
+      </div><br>
+      <div class="row padleft" ng-if="serviceCatalog.status == 'open'">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+          <button type="button" class="btn btn-info pull-right" style="background-color:#ffed00" ng-click="order(serviceCatalog,ev)"> Order</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<br>  
+<br> 
+<!-- <div class="row padleft" ng-if="serviceCatalog.status == 'open'">
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <button type="button" class="btn btn-info" style="background-color:#ffed00" ng-click="order(serviceCatalog,ev)"> Order</button>
+  </div>
+</div> -->
+</div>
+

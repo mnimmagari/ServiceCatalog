@@ -1,0 +1,88 @@
+<div class="container" >
+	<div class="page-header">
+		RDD Service Catalogue <a ng-click="helpRdd(serviceCatalog,ev)"><span class="pull-right"><i class="fa fa-question fa-md" aria-hidden="true" title="Help"></i></span></a>
+		<div class="sub-header">
+		</div>
+	</div>
+	<div class="form-inline has-feedback filter-header">
+		<div class="row">
+			<div class="col-xs-8">
+				<input type="text" class="form-control" placeholder="Search by text" ng-model="search.$" />
+                <script type="text/javascript">
+                $(function(){
+                    var temp="";
+                    $("#rddId").val(temp);
+                });
+                </script>
+                &nbsp;&nbsp;<label>Category</label>: &nbsp;<select ng-model="search.category" class="form-control" id="rddId">
+                <option value="Design">Design</option>
+                <option value="Development">Development</option>
+                <option value="Data science">Data science</option>
+                <option selected="selected" selected="true" value="">All</option>
+            </select>
+            <!-- <input type="text" class="form-control" placeholder="Search by category"  ng-model="search.category"> -->
+            <!-- <input type="text" class="form-control" placeholder="Search by subcategory"  ng-model="search.subCategory"> -->
+        </div>	
+        <div class="col-xs-2 pull-right" ng-if="activeUser.groups ==='admin'">
+            <a class="btn btn-default btn-sm pull-right" href="#/serviceCatalog/add"> Add</a>
+        </div>
+
+        <!-- <a class="btn btn-default btn-sm" ng-click="exportExcel()"  tooltips tooltip-template="Download Service Catalog" ><i class="fa fa-download" aria-hidden="true"></i></a>  -->
+    </div>
+
+</div>
+<br>
+<div ng-show="nooftaclist">
+  <span class="blinkApply_me capital">no records found</span>
+  <br>
+</div>
+
+<div class="row">{{serviceCataloglist.length}}
+  <div ng-show="serviceCataloglist.length !==0" ng-repeat="serviceCatalog in serviceCataloglist | filter:search">
+   <div  class="col-sm-6 col-md-3 col-lg-3 col-xs-12 horspace" ng-if= "serviceCatalog.status =='open'">
+    <a href= "/serviceCatalog/{{serviceCatalog._id}}/view">	
+        <div class="tileblock ttile" >
+                        <!-- <div ng-if= "serviceCatalog.sizing == 'Medium'" tooltips tooltip-template="{{serviceCatalog.sizing}} priority">
+                            <div class="led-box">
+                                <div class="led-yellow"></div>
+                            </div>
+                        </div>
+                        <div ng-if= "serviceCatalog.sizing == 'Large'" tooltips tooltip-template="{{serviceCatalog.sizing}} priority">
+                            <div class="led-box">
+                                <div class="led-red"></div>
+                            </div>
+                        </div>
+                        <div ng-if= "serviceCatalog.sizing == 'Small'" tooltips tooltip-template="{serviceCatalog.sizing}} priority">
+                            <div class="led-box">
+                                <div class="led-blue"></div>
+                            </div>
+                        </div> -->
+                        <div tooltips tooltip-template="{{serviceCatalog.title}}"> 
+                            <p class="title-job pmargin title-truncate-new">&nbsp;&nbsp;{{serviceCatalog.title}} </p>
+                        </div>
+                        <div class="text-small">
+                          <span class="pull-right"><b><i class="fa fa-calendar fa-lg" tooltips tooltip-template="Posted On"/>&nbsp;&nbsp;{{serviceCatalog.postedDate | date}}</b></span>
+                      </div><br>
+                      <div class="text-desc maxlines"><richtext body-text="serviceCatalog.description"></richtext></div>
+                      <hr class="hrstyle"/>
+                      {{modeDisplay="nameonly";""}}
+                      <span class="pull-left "><i class="fa fa-user fa-lg" tooltips tooltip-template="Posted by" />&nbsp;&nbsp;<userdisplay view-mode="modeDisplay" class="title-job pmargin capital" user-id="serviceCatalog.postedBy"/>&nbsp;&nbsp;</span>
+                      <div class="pull-right" >
+                        
+                        <!-- <i class="fa fa-map-marker" aria-hidden="true"> {{serviceCatalog.locations.region}},{{serviceCatalog.locations.country}}</i> -->
+                        <!-- <i class="fa fa-calendar fa-lg" tooltips tooltip-template="Posted On"/>&nbsp;&nbsp;{{serviceCatalog.postedDate | date}}<b ng-if="activeUser.groups ==='admin'">&nbsp;|</b> -->
+
+                        <a class="table-btn" href="#/serviceCatalog/{{serviceCatalog._id}}/project/edit" tooltips tooltip-template="Edit Service Catalog" ng-if="activeUser.groups ==='admin'"><i class="fa fa-edit fa-lg" /></a>
+
+                        <a id="step6" class="table-btn" ng-click="remove(serviceCatalog._id)" confirm-dialog header-text="Delete Service Catalog" content="Are you sure you want to delete the Service Catalog? </b>" 
+                            yes-text="Ok" no-text="Cancel" ng-if="activeUser.groups ==='admin'"><i class="fa fa-trash fa-lg" tooltips tooltip-template="Delete Service Catalog" /></a>
+                            <br>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+</div>

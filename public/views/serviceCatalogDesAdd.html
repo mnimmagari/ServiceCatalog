@@ -1,0 +1,210 @@
+<style type="text/css">
+ul {
+	list-style-type: none;
+}
+</style>
+<div class="container" ng-controller="serviceCatalogControllerMain">
+	<div ng-if="mode=='add'" class="page-header">
+		RDD Service Catalogue  - Add
+	</div>
+
+	<div ng-if="mode=='edit'" class="page-header">
+		RDD Service Catalogue  - Edit
+	</div>
+	<form name="serviceCatalogForm">
+		<div class="row" >
+			<br>
+
+			<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 text-medium"><label>Title &amp; Description <span class="asterrisk">*</span></label></div>
+			<!-- Title -->
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				<input  placeholder="Title" name="title" class="form-control" ng-model="serviceCatalog.title" required>
+				<div ng-messages="serviceCatalogForm.title.$error" ng-show="serviceCatalogForm.title.$touched || !serviceCatalogForm.title.$pristine">
+					<div class="messagenotify">
+						<span class="error" ng-show="serviceCatalogForm.title.$error.required">This field is Mandatory</span>
+					</div></div>
+				</div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3"></div>
+				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+					<!--Description -->
+					<text-angular ta-toolbar="[['bold', 'italics', 'underline',  'ul', 'ol', 'redo', 'undo', 'clear','insertLink'],['p', 'quote'],
+					['justifyLeft', 'justifyCenter', 'justifyRight', 'indent', 'outdent']]" ng-model="serviceCatalog.description" name="description"/></text-angular>
+					<div ng-messages="serviceCatalogForm.description.$error" ng-show="serviceCatalogForm.description.$touched || !serviceCatalogForm.description.$pristine">
+						<div class="messagenotify">
+							<span class="error" ng-show="serviceCatalogForm.description.$error.required">This field is Mandatory</span>
+						</div></div>
+					</div>
+				</div>
+				<br/>
+				<!-- <div class="panel panel-default">
+					<div class="panel-body">A Basic Panel</div>
+				</div> -->
+				<!--sizing-->
+				<!-- <center><div class="well">Atleast one price value has to be fill<i class="fa fa-times pull-right" aria-hidden="true" ng-click="closePop()"></i></div></center> -->
+				<div class="row" >
+
+					<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 panel panel-default">
+						<div class="panel-body">
+
+							<center><label>Small Sizing</label></center>
+							<!-- turnaround -->
+							<div class="row" >
+								<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 text-medium"><label>Turn around</label></div>
+								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+									<input  placeholder="turnaround" name="turnaround" class="form-control" ng-model="serviceCatalog.small.turnaround">
+								</div>
+							</div>
+							<br/>
+
+							<!-- price -->
+							<div class="row" >
+								<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 text-medium"><label>Price<span class="asterrisk">*</span></label></div>
+								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+									<input  placeholder="price" name="price" class="form-control" ng-model="serviceCatalog.small.price" ng-pattern="/^[+0-9]+$/" >
+									<div ng-messages="serviceCatalogForm.price.$error" ng-show="serviceCatalogForm.price.$touched || !serviceCatalogForm.price.$pristine">
+										<div class="messagenotify">
+											<span class="error" ng-show="serviceCatalogForm.price.$error.pattern">Please Enter a valid price</span>
+										</div></div>
+									</div>
+								</div>
+								<br/>
+							</div>
+						</div>
+
+						<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 panel panel-default">
+							<div class="panel-body">
+
+								<center><label>Medium Sizing</label></center>
+								<!-- turnaround -->
+
+								<div class="row" >
+									<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 text-medium"><label>Turn around</label></div>
+									<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+										<input  placeholder="turnaround" name="turnaround" class="form-control" ng-model="serviceCatalog.medium.turnaround">
+									</div>
+								</div>
+								<br/>
+
+								<!-- price -->
+								<div class="row" >
+									<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 text-medium"><label>Price<span class="asterrisk">*</span></label></div>
+									<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+										<input  placeholder="price" name="price" class="form-control" ng-model="serviceCatalog.medium.price" ng-pattern="/^[+0-9]+$/" >
+										<div ng-messages="serviceCatalogForm.price.$error" ng-show="serviceCatalogForm.price.$touched || !serviceCatalogForm.price.$pristine">
+											<div class="messagenotify">
+												<span class="error" ng-show="serviceCatalogForm.price.$error.pattern">Please Enter a valid price</span>
+											</div></div>
+										</div>
+									</div>
+									<br/>
+								</div>
+							</div>
+
+							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 panel panel-default">
+								<div class="panel-body">
+									<center><label>Large Sizing</label></center>
+									<!-- <input  placeholder="sizing" name="sizing" class="form-control" ng-model="serviceCatalog.sizing"> -->
+									<!-- turnaround -->
+									<div class="row" >
+										<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 text-medium"><label>Turn around</label></div>
+										<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+											<input  placeholder="turnaround" name="turnaround" class="form-control" ng-model="serviceCatalog.large.turnaround">
+										</div>
+									</div>
+									<br/>
+
+									<!-- price -->
+									<div class="row" >
+										<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 text-medium"><label>Price<span class="asterrisk">*</span></label></div>
+										<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+											<input  placeholder="price" name="price" class="form-control" ng-model="serviceCatalog.large.price" ng-pattern="/^[+0-9]+$/" >
+											<div ng-messages="serviceCatalogForm.price.$error" ng-show="serviceCatalogForm.price.$touched || !serviceCatalogForm.price.$pristine">
+												<div class="messagenotify">
+													<span class="error" ng-show="serviceCatalogForm.price.$error.pattern">Please Enter a valid price</span>
+												</div></div>
+											</div>
+										</div>
+										<br/>
+									</div>
+								</div>
+
+							</div>
+							<br/>
+
+
+							<!--Category-->
+							<div class="row" >
+								<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 text-medium">
+									<label>Category</label>&nbsp;&nbsp;&nbsp;&nbsp;
+								</div>
+								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+									<md-radio-group ng-model="serviceCatalog.category">
+									<md-radio-button value="Design" class= "radio-inline" ng-hide="true" >Design</md-radio-button>&nbsp;
+									Design<md-radio-button value="Design" class= "radio-inline"></md-radio-button>&nbsp;
+									Development<md-radio-button value="Development" class= "radio-inline"></md-radio-button>&nbsp;
+									Data science<md-radio-button value="Data science" class= "radio-inline"></md-radio-button>
+								</div>
+							</md-radio-group>
+						</div>
+						<br/>
+
+						<!-- subCategory Design -->
+						<div class="row" ng-if="serviceCatalog.category ==='Design'">
+							<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 text-medium"><label>Sub Category</label></div>
+							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+								<md-radio-group ng-model="serviceCatalog.subCategory">
+								<md-radio-button value="Application Visual Design" class= "radio-inline" ng-hide="true" >Application Visual Design</md-radio-button>&nbsp;
+								<ul>
+									<li><md-radio-button value="Application Visual Design" class= "radio-inline">Application Visual Design&nbsp;</md-radio-button></li>
+									<li><md-radio-button value="Visual Prototype" class= "radio-inline">Visual Prototype&nbsp;</md-radio-button>&nbsp;</li>
+									<li><md-radio-button value="Application Wireframe" class= "radio-inline">Application Wireframe&nbsp;</md-radio-button>&nbsp;</li><li><md-radio-button value="Rapid UX" class= "radio-inline">Rapid UX&nbsp;</md-radio-button>&nbsp;</li>
+									<li><md-radio-button value="Others" class= "radio-inline">Others&nbsp;</md-radio-button></li></ul>
+								</div>
+							</div>
+
+							<!-- subCategory develop -->
+							<div class="row" ng-if="serviceCatalog.category ==='Development'">
+								<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 text-medium"><label>Sub Category</label></div>
+								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+									<md-radio-group ng-model="serviceCatalog.subCategory">
+									<md-radio-button value="Front-end Application Development" class= "radio-inline" ng-hide="true" >Design</md-radio-button>&nbsp;
+									<ul><li><md-radio-button value="Application Development" class= "radio-inline">Application Development</md-radio-button>&nbsp;</li>
+										<li><md-radio-button value="Service Development" class= "radio-inline">Service Development</md-radio-button>&nbsp;</li>
+										<li><md-radio-button value="Automated Test" class= "radio-inline">Automated Test</md-radio-button>&nbsp;</li>
+										<li><md-radio-button value="Bug fixes & Enhancements" class= "radio-inline">Bug fixes & Enhancements</md-radio-button>&nbsp;</li>
+										<li><md-radio-button value="Others" class= "radio-inline">Others</md-radio-button></li></ul>
+									</div>
+								</div>
+
+								<!-- subCategory Data science -->
+								<div class="row" ng-if="serviceCatalog.category ==='Data science'">
+									<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 text-medium"><label>Sub Category</label></div>
+									<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+										<md-radio-group ng-model="serviceCatalog.subCategory">
+										<md-radio-button value="Design" class= "radio-inline" ng-hide="true" >Design</md-radio-button>&nbsp;
+										<ul><li><md-radio-button value="Algorithm Optimisation & Machine Learning" class= "radio-inline">Algorithm Optimisation & Machine Learning</md-radio-button>&nbsp;</li>
+											<li><md-radio-button value="Predictive Analytics" class= "radio-inline">Predictive Analytics</md-radio-button></li>
+											<li><md-radio-button value="Image and Pattern Recognition" class= "radio-inline">Image and Pattern Recognition</md-radio-button>&nbsp;</li>
+											<li><md-radio-button value="Others" class= "radio-inline">Others</md-radio-button></li></ul>
+										</div>
+									</div>
+									<br/>
+
+
+									<!--fileattachment-->
+									<fileattachment folder-type="serviceCatalog" file-size="25" file-allowed="15" array="array" file-type="multiFile" title="Service Catalog Attachment" view="detail" type="allowUpload" file-ref-data-param="fileRefDataParam"></fileattachment>
+									<br/>
+
+									<div class="form-group">
+										<div class="pull-left">
+											<button type="submit" class="btn btn-info" ng-click="save()" ng-disabled="serviceCatalogForm.$invalid">Save</button>&nbsp;&nbsp;
+											<button type="reset" class="btn button4 pull-right" ng-click="cancel()" confirm-dialog header-text="Cancel Form Submission" content="Are you sure you want to cancel the submission of this form ?"
+											yes-text="Ok" no-text="Cancel">Cancel</button>
+										</form>
+									</div>
+								</div>
+							</form>
+						</div>

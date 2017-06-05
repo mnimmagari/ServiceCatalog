@@ -1,0 +1,39 @@
+.ttile {
+  height: 150px;
+}
+
+.tileblock {
+  margin-bottom: 10px;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  padding: 10px;
+  -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .05);
+  -moz-box-shadow: 0 0 1px 1px #fff;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, .05);
+  background-color: #f0f0f0;
+  color: #000000;
+  border-top: 4px solid #000000;
+}
+
+.pmargin {
+  margin: 0 0 5px;
+}
+
+.title-truncate-new {
+  width: 240px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.title-job {
+  color: #000!important;
+  font-size: 1.2em;
+  font-family: "gtWalsheimBold", Arial, sans-serif;
+  font-weight: bold !important;
+  text-transform: capitalize;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  white-space: nowrap;
+  -ms-overflow-style: none;
+}
