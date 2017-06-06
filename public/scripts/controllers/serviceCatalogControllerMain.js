@@ -1,4 +1,5 @@
 var serviceCatalogApp = angular.module('serviceModule', ['ngMaterial','doowb.angular-pusher','pusherConfig','appUserService','appInfoService']);
+
 serviceCatalogApp.controller('serviceCatalogControllerMain', ['$scope','$http','$filter','$routeParams','$location','growl','$rootScope','$mdDialog','Pusher','$timeout','appUserService',
 	function ($scope, $http, $filter, $routeParams, $location, growl, $rootScope, $mdDialog, Pusher, $timeout, appUserService) {
 //appuserService starts
@@ -31,7 +32,6 @@ var refresh = function() {
 		$scope.array=[];
 		$http.get('/api/v1/secure/serviceCatalog/' + id).success(function(response){
 			$scope.serviceCatalog = response;
-			console.log($scope.serviceCatalog);
 			if (response.material!= undefined) {
 				var array1=[];
 				array1=response.material.split(",");

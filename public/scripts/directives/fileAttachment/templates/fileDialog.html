@@ -1,0 +1,31 @@
+<style>
+   md-dialog {
+   margin-top: 100px;
+   }
+</style>
+<md-dialog aria-label="Mango (Fruit)" ng-cloak>
+   <form name="UploadForm">
+      <md-toolbar>
+         <div class="md-toolbar-tools">
+            <h2>Please Attach the files</h2>
+            <span flex></span>
+         </div>
+      </md-toolbar>
+      <md-dialog-content>
+         <div class="form-group">
+            <label class="control-label" >&nbsp;Files :</label>
+            <div class="dropzone dropzone-previews dz-default" id="dropzone-example" dropzone="dropzoneConfig">
+               <div class="fallback">
+                  <input name="file" type="file" multiple />
+               </div>
+            </div>
+         </div>
+         <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button class="btn btn-success" ng-click="cancel()">
+               OK
+            </md-button>
+         </md-dialog-actions>
+      </md-dialog-content>
+   </form>
+</md-dialog>

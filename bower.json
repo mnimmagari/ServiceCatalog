@@ -11,7 +11,8 @@
     "angular-material": "1.0.6",
     "angular-bootstrap": "latest",
     "ng-file-upload": "11.0.0",
-    "angular-pusher": "latest"
+    "angular-pusher": "latest",
+    "font-awesome": "latest"
   },
   "resolutions": {
     "angular":"1.5.1",
